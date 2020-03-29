@@ -19,14 +19,15 @@ namespace CoWorkers
             do
             {
                 isActive = false;
-                foreach (var enumerator in enumerators)
+               foreach (IEnumerator<IWorker> enumerator in enumerators)
                 {
                     if (enumerator.MoveNext())
                     {
                         isActive = true;
-                        yield return (IWorker)enumerator.Current;
+                        yield return enumerator.Current;
                     }
                 }
+              
             }
             while (isActive == true);
         }

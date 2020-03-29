@@ -4,11 +4,11 @@ namespace CoWorkers
 {
     public class MultiplyWorker : IWorker
     {
-        private bool isActive = true;
-        public int Multiplier { get; set; } = 0;
+               public int Multiplier { get; set; } = 0;
         public int Result { get; private set; } = 1;
         Direction countDirection = Direction.Up;
         int counter = 0;
+        private bool isActive = true;
         public bool Step()
         {
             if (!isActive) return false;

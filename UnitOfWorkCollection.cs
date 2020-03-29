@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CoWorkers
 {
@@ -11,23 +10,22 @@ namespace CoWorkers
         {
             this.workers = workers;
         }
-
         private IEnumerable<IWorker> UnitOfWorkEnumerator(IEnumerable<IWorker> workers)
         {
-            var enumerators = workers.Select(w => w.GetEnumerator());
+           
             bool isActive;
             do
             {
                 isActive = false;
-               foreach (IEnumerator<IWorker> enumerator in enumerators)
+                foreach (IWorker worker in workers)
                 {
-                    if (enumerator.MoveNext())
+                    if (worker.Step())
                     {
                         isActive = true;
-                        yield return enumerator.Current;
+                        yield return worker;
                     }
                 }
-              
+
             }
             while (isActive == true);
         }

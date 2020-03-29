@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Compile Remove="DisposableCollection.cs" />
+    <Compile Remove="GenericEnumerator.cs" />
   </ItemGroup>
 
 </Project>
